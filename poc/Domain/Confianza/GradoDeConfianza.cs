@@ -1,4 +1,4 @@
-namespace poc
+namespace ServicioCalculadorGradoDeConfianza.Domain.Entidades
 {
     public enum GradoDeConfianza
     {
