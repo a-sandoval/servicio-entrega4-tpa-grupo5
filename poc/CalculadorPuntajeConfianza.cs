@@ -2,6 +2,27 @@ namespace poc
 {
     public class CalculadorPuntajeConfianza{
 
+        float calcularPuntajeConfianza(Usuario usuario, List<Incidente> incidentes)
+        {
+            Bool accionLegitimaSemanal = false;
+            float puntajeSemanal = 0;
+
+            for(incidente in incidentes){
+
+                if (self.esAperturaFradulenta(incidente) || self.esCierreFraudulento(incidente))
+                {
+                    puntajeSemanal -= 0,2;
+                }
+                else{
+                    accionLegitimaSemanal = true;
+                }
+            }
+
+            if(accionLegitimaSemanal){puntajeSemanal += 0,5}
+
+            return puntajeSemanal;
+        }
+
         Boolean esAperturaFraudulenta(Incidente incidente){
             
             DateTime fecha1 = Incidente.fechaInicio; 
@@ -11,20 +32,17 @@ namespace poc
 
             return (diferencia.TotalMinutes < 3);
         }
+        
 
-        Boolean esCierreFraudulento(Incidente incidente, List<Incidente> incidentes){
-
-            for (incidente1 in incidentes)
+        bool esCierreFraudulento(Incidente incidenteCerrado, List<Incidente> incidentes)
             {
-                int servicioAfectado = incidente.servicioAfectado;
+                int IDServicioAfectado = incidenteCerrado.servicioAfectado;
 
-                for (incidente2 in incidentes where incidente.servicioAfectado = servicioAfectado)
-                {
-                    return (incidente2.fechaInicio - incidente1.fechaCierre < 3)
-                }
+                Func<Incidente, bool> filtro = incidente => incidente.servicioAfectado == IDServicioAfectado &&
+                                                            (incidente.fechaInicio - incidenteCerrado.fechaCierre).TotalMinutes =< 3;
+
+                return incidentes.Any(filtro);
             }
-            
-        }
     }
 }
 

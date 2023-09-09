@@ -3,7 +3,7 @@ namespace poc
 {
     public class calcularGradoConfianza{
 
-        GradoDeConfianza calcularGradoDeConfianza(int puntos){
+        GradoDeConfianza calcularGradoDeConfianza(float puntos){
             if(puntos< 2){
                 return GradoDeConfianza.NoConfiable;
             }
