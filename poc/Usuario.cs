@@ -6,6 +6,13 @@
 
         public string apellido { get; set; }
 
+        public int id  {get; set;}
+
+        public float puntosDeConfianza { get; set; }
+
+        GradoDeConfianza calcularGradoConfianza(){
+            
+        }
       
     }
 }
