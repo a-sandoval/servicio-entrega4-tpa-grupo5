@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using ServicioCalculadorGradoDeConfianza.DTOs.Request;
 using ServicioCalculadorGradoDeConfianza.DTOs.Request.Request;
+using ServicioCalculadorGradoDeConfianza.DTOs.Response;
 
 namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
 {
@@ -52,6 +55,8 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
 
             return incidentes.Any(filtro);
         }
+
+   
     }
 }
 

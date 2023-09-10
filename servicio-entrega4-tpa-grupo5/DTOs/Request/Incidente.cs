@@ -2,7 +2,7 @@ namespace ServicioCalculadorGradoDeConfianza.DTOs.Request.Request
 {
     public class Incidente
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime FechaApertura { get; set; }
         public Usuario UsuarioReportador { get; set; }
         public DateTime FechaCierre { get; set; }

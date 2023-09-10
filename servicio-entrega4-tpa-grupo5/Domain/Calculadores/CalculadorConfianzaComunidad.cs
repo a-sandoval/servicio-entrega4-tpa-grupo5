@@ -22,13 +22,13 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
         private float CalcularPuntajeDeConfianza(Comunidad comunidad, List<Incidente> incidentes)
         {
 
-            int cantidadDeMiembros = comunidad.miembros.Count;
+            int cantidadDeMiembros = comunidad.Miembros.Count;
             float puntajeConfianzaTotal = 0;
 
             CalculadorPuntajeConfianzaDeUsuario calculador = new CalculadorPuntajeConfianzaDeUsuario();
             CalculadorGradoDeConfianza calculadorGrado = new();
 
-            foreach (Usuario miembro in comunidad.miembros)
+            foreach (Usuario miembro in comunidad.Miembros)
             {
 
                 float puntajeMiembro = calculador.CalcularPuntajeConfianza(miembro, incidentes);
