@@ -41,7 +41,7 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
             foreach (var incidente in incidentesDelUsuario)
             {
 
-                if (EsAperturaFraudulenta(incidente) || EsCierreFraudulento(incidente, incidentes))
+                if (EsAperturaFraudulenta(incidente) || EsCierreFraudulento(usuario, incidente, incidentes))
                 {
                     puntajeSemanal = puntajeSemanal - restarFraudulento;
                 }
@@ -68,17 +68,26 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
         }
 
 
-        public bool EsCierreFraudulento(Incidente incidenteCerrado, List<Incidente> incidentes)
+        public bool EsCierreFraudulento(Usuario usuario, Incidente incidenteCerrado, List<Incidente> incidentes)
         {
-            int IDServicioAfectado = incidenteCerrado.ServicioAfectado.Id;
+            List<Incidente> incidentesPosteriores = incidentes.Where(i => i.FechaApertura > incidenteCerrado.FechaCierre).ToList();
 
-            Func<Incidente, bool> filtro = incidente => incidente.ServicioAfectado.Id == IDServicioAfectado &&
-                                                        (incidente.FechaApertura - incidenteCerrado.FechaCierre).TotalMinutes <= 3;
+            if (usuario.Id == incidenteCerrado.UsuarioAnalizador.Id && incidentesPosteriores.Count != 0)
+            {
+                int IDServicioAfectado = incidenteCerrado.ServicioAfectado.Id;
 
-            return incidentes.Any(filtro);
+                Func<Incidente, bool> filtro = incidente => incidente.ServicioAfectado.Id == IDServicioAfectado &&
+                                                            (incidente.FechaApertura - incidenteCerrado.FechaCierre).TotalMinutes <= 3;
+
+                return incidentes.Any(filtro);
+
+            }
+
+            return false;
+
         }
 
-   
+
     }
 }
 
