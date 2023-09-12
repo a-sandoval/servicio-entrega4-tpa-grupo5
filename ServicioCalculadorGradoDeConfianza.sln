@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicioCalculadorGradoDeConfianza", "ServicioCalculadorGradoDeConfianza\ServicioCalculadorGradoDeConfianza.csproj", "{633A4AEA-B6AE-4E02-8E81-3D30FBFF3515}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioTest", "ServicioTest\ServicioTest.csproj", "{C0AFB7B2-92C2-470F-9E87-D38195A61684}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{633A4AEA-B6AE-4E02-8E81-3D30FBFF3515}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{633A4AEA-B6AE-4E02-8E81-3D30FBFF3515}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{633A4AEA-B6AE-4E02-8E81-3D30FBFF3515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0AFB7B2-92C2-470F-9E87-D38195A61684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0AFB7B2-92C2-470F-9E87-D38195A61684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0AFB7B2-92C2-470F-9E87-D38195A61684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0AFB7B2-92C2-470F-9E87-D38195A61684}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

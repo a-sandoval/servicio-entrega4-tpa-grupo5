@@ -32,7 +32,7 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
         public float CalcularPuntajeConfianza(Usuario usuario, List<Incidente> incidentes)
         {
             bool accionLegitimaSemanal = false;
-            float puntajeSemanal = 0;
+            float puntajeSemanal = usuario.PuntosDeConfianza; 
             float restarFraudulento = 0.2F;
             float aumentarPuntaje = 0.5F;
 
@@ -41,7 +41,7 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
             foreach (var incidente in incidentesDelUsuario)
             {
 
-                if (EsAperturaFraudulenta(incidente) || EsCierreFraudulento(usuario, incidente, incidentes))
+                if (EsAperturaFraudulenta(usuario, incidente) || EsCierreFraudulento(usuario, incidente, incidentes))
                 {
                     puntajeSemanal = puntajeSemanal - restarFraudulento;
                 }
@@ -56,21 +56,29 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
             return puntajeSemanal;
         }
 
-        public bool EsAperturaFraudulenta(Incidente incidente)
-        {
+        public bool EsAperturaFraudulenta(Usuario usuario, Incidente incidente)
+        {   
+            if(usuario.Id == incidente.UsuarioReportador.Id)
+            {
+                DateTime fecha1 = incidente.FechaApertura;
+                DateTime fecha2 = incidente.FechaCierre;
 
-            DateTime fecha1 = incidente.FechaApertura;
-            DateTime fecha2 = incidente.FechaCierre;
+                TimeSpan diferencia = fecha2 - fecha1;
 
-            TimeSpan diferencia = fecha2 - fecha1;
+                return diferencia.TotalMinutes < 3;
 
-            return diferencia.TotalMinutes < 3;
+
+            }
+
+            return false; 
+            
         }
 
 
         public bool EsCierreFraudulento(Usuario usuario, Incidente incidenteCerrado, List<Incidente> incidentes)
         {
             List<Incidente> incidentesPosteriores = incidentes.Where(i => i.FechaApertura > incidenteCerrado.FechaCierre).ToList();
+
 
             if (usuario.Id == incidenteCerrado.UsuarioAnalizador.Id && incidentesPosteriores.Count != 0)
             {

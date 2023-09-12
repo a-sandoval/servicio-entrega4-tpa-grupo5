@@ -31,3 +31,4 @@ C:\Users\DELL\source\repos\servicio-entrega4-tpa-grupo5\ServicioCalculadorGradoD
 C:\Users\DELL\source\repos\servicio-entrega4-tpa-grupo5\ServicioCalculadorGradoDeConfianza\obj\Debug\net6.0\ServicioCalculadorGradoDeConfianza.pdb
 C:\Users\DELL\source\repos\servicio-entrega4-tpa-grupo5\ServicioCalculadorGradoDeConfianza\obj\Debug\net6.0\ServicioCalculadorGradoDeConfianza.genruntimeconfig.cache
 C:\Users\DELL\source\repos\servicio-entrega4-tpa-grupo5\ServicioCalculadorGradoDeConfianza\obj\Debug\net6.0\ref\ServicioCalculadorGradoDeConfianza.dll
+C:\Users\DELL\source\repos\servicio-entrega4-tpa-grupo5\ServicioCalculadorGradoDeConfianza\bin\Debug\net6.0\nunit.framework.dll
