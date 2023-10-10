@@ -9,9 +9,9 @@ namespace ServicioCalculadorGradoDeConfianza.DTOs.Response
 
         public float NuevoPuntaje { get; set; }
 
-        public GradoDeConfianza GradoDeConfianzaActual { get; set; }
+        public string GradoDeConfianzaActual { get; set; }
 
-          public GradoDeConfianzaResponseComunidad(Comunidad comunidad, float puntaje, GradoDeConfianza gradoDeConfianza) {
+          public GradoDeConfianzaResponseComunidad(Comunidad comunidad, float puntaje, string gradoDeConfianza) {
 
             Comunidad = comunidad; 
             NuevoPuntaje = puntaje; 

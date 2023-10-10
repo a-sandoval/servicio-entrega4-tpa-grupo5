@@ -25,7 +25,9 @@ namespace ServicioCalculadorGradoDeConfianza.Domain.calculadores
             
             GradoDeConfianza gradoConfianza = calculadorGradoDeConfianza.CalcularGradoDeConfianza(puntajeConfianza); 
 
-            return new GradoDeConfianzaResponseUsuario(usuarioRequest.Usuario, puntajeConfianza, gradoConfianza); 
+            GradoDeConfianzaConverter converter = new(); 
+
+            return new GradoDeConfianzaResponseUsuario(usuarioRequest.Usuario, puntajeConfianza, converter.Convertir(gradoConfianza)); 
 
         }
 
